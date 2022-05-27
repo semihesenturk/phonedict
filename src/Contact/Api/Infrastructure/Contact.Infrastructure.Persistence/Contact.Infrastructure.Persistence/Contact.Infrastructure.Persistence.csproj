@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Contact.Application\Contact.Application\Contact.Application.csproj" />
     <ProjectReference Include="..\..\..\Core\Contact.Domain\Contact.Domain\Contact.Domain.csproj" />
   </ItemGroup>
 
