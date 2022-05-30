@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Common\PhoneDict.Common\PhoneDict.Common.csproj" />
     <ProjectReference Include="..\..\Contact.Domain\Contact.Domain\Contact.Domain.csproj" />
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
@@ -21,11 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Command\Contact\" />
-    <Folder Include="Features\Command\Person\Create\" />
     <Folder Include="Features\Query\Contact\" />
     <Folder Include="Features\Query\Person\" />
-    <Folder Include="Mapping\" />
   </ItemGroup>
 
 </Project>

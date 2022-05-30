@@ -38,50 +38,26 @@ public class ContactContext : DbContext
         }
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
-    public override int SaveChanges()
-    {
-        OnBeforeSave();
-        return base.SaveChanges();
-    }
+        var datas = ChangeTracker
+             .Entries<BaseEntity>();
 
-    public override int SaveChanges(bool acceptAllChangesOnSuccess)
-    {
-        OnBeforeSave();
-        return base.SaveChanges(acceptAllChangesOnSuccess);
-    }
-
-    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
-    {
-        OnBeforeSave();
-        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-    }
-
-    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-    {
-        OnBeforeSave();
-        return base.SaveChangesAsync(cancellationToken);
-    }
-
-    private void OnBeforeSave()
-    {
-        var addedEntities = ChangeTracker.Entries()
-            .Where(i => i.State == EntityState.Added)
-            .Select(i => (BaseEntity)i.Entity);
-
-        PrepareAddedEntites(addedEntities);
-    }
-
-    private void PrepareAddedEntites(IEnumerable<BaseEntity> entites)
-    {
-        foreach (var entity in entites)
+        //Interceptor
+        foreach (var item in datas)
         {
-            if (entity.CreateDate == DateTime.MinValue)
-                entity.CreateDate = DateTime.Now;
+            _ = item.State switch
+            {
+                EntityState.Added => item.Entity.CreateDate = DateTime.UtcNow,
+                EntityState.Detached => item.Entity.CreateDate = item.Entity.CreateDate,
+                EntityState.Unchanged => item.Entity.CreateDate= item.Entity.CreateDate,
+                EntityState.Deleted => item.Entity.CreateDate= item.Entity.CreateDate,
+                EntityState.Modified => item.Entity.CreateDate= item.Entity.CreateDate,
+                _ => item.Entity.CreateDate= item.Entity.CreateDate
+            };
         }
+
+        return await base.SaveChangesAsync(cancellationToken);
     }
     #endregion
 }

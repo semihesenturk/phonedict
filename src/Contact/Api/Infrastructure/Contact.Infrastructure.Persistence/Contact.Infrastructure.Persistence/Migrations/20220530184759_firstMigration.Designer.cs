@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Contact.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ContactContext))]
-    [Migration("20220530121540_mig_1")]
-    partial class mig_1
+    [Migration("20220530184759_firstMigration")]
+    partial class firstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

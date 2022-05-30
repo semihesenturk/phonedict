@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Contact.Infrastructure.Persistence.Migrations
 {
-    public partial class mig_1 : Migration
+    public partial class firstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "persons",
+                name: "Persons",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -21,11 +21,11 @@ namespace Contact.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_persons", x => x.Id);
+                    table.PrimaryKey("PK_Persons", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "contacts",
+                name: "Contacts",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -37,28 +37,28 @@ namespace Contact.Infrastructure.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_contacts", x => x.Id);
+                    table.PrimaryKey("PK_Contacts", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Contacts_Persons_PersonId",
                         column: x => x.PersonId,
-                        principalTable: "persons",
+                        principalTable: "Persons",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_contacts_personId",
-                table: "contacts",
+                name: "IX_Contacts_PersonId",
+                table: "Contacts",
                 column: "PersonId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "contacts");
+                name: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "persons");
+                name: "Persons");
         }
     }
 }
