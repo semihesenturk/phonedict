@@ -11,19 +11,14 @@ public static class Registration
 {
     public static IServiceCollection AddInfrastructureRegistration(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<ContactContext>(
-            conf =>
-            {
-                var connStr = configuration["SozlukDbConnectionString"].ToString();
-                conf.UseNpgsql(connStr, opt =>
-                {
-                    opt.EnableRetryOnFailure();
-                });
-            });
+        services.AddDbContext<ContactContext>(options 
+            => options.UseNpgsql("User ID=esenturk;Password=123456789Se;Host=localhost;Port=5432;Database=PhoneDictDb;"));
 
-        //Seed startup datas
+
+        #region Seed Data
         var seedData = new SeedData();
         seedData.SeedAsync(configuration).GetAwaiter().GetResult();
+        #endregion
 
         services.AddScoped<IPersonRepository, PersonRepository>();
         services.AddScoped<IContactRepository, ContactRepository>();

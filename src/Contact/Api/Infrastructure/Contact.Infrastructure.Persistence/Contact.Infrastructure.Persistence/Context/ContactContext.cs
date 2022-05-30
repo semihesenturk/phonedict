@@ -31,8 +31,8 @@ public class ContactContext : DbContext
         //For Design Time Operations! For Example Migrations.
         if (!optionsBuilder.IsConfigured)
         {
-            var connStr = "Data Source=127.0.0.1; Initial Catalog=sozlukdb; Persist Security Info=True; User ID=sa; Password=?Se1478963";
-          
+            var connStr = "User ID=esenturk;Password=123456789Se;Host=localhost;Port=5432;Database=PhoneDictDb;";
+
             optionsBuilder.UseNpgsql(connStr);
             base.OnConfiguring(optionsBuilder);
         }

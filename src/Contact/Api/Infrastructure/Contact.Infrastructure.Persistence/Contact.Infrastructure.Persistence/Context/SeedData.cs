@@ -10,7 +10,7 @@ internal class SeedData
     {
         var result = new Faker<Domain.Models.Person>("tr")
             .RuleFor(i => i.Id, i => Guid.NewGuid())
-            .RuleFor(i => i.CreateDate, i => i.Date.Between(DateTime.Now.AddDays(-100), DateTime.Now))
+            .RuleFor(i => i.CreateDate, i => i.Date.Between(DateTime.UtcNow.AddDays(-100), DateTime.Now))
             .RuleFor(i => i.FirstName, i => i.Person.FirstName)
             .RuleFor(i => i.LastName, i => i.Person.LastName)
             .RuleFor(i => i.Company, i => i.Company.CompanyName())
@@ -21,8 +21,10 @@ internal class SeedData
 
     public async Task SeedAsync(IConfiguration configuration)
     {
+        var connStr = "User ID=esenturk;Password=123456789Se;Host=localhost;Port=5432;Database=PhoneDictDb;";
+
         var dbContextBuilder = new DbContextOptionsBuilder();
-        dbContextBuilder.UseNpgsql();
+        dbContextBuilder.UseNpgsql(connStr);
 
         var context = new ContactContext(dbContextBuilder.Options);
 
@@ -44,7 +46,7 @@ internal class SeedData
 
         var contacts = new Faker<Domain.Models.Contact>("tr")
             .RuleFor(i => i.Id, i => guids[counter++])
-            .RuleFor(i => i.CreateDate, i => i.Date.Between(DateTime.Now.AddDays(-100), DateTime.Now))
+            .RuleFor(i => i.CreateDate, i => i.Date.Between(DateTime.UtcNow.AddDays(-100), DateTime.Now))
             .RuleFor(i => i.PersonId, i => i.PickRandom(personIds))
             .RuleFor(i => i.PhoneNumber, i => i.Phone.PhoneNumber())
             .RuleFor(i => i.EmailAddress, i => i.Internet.Email())
