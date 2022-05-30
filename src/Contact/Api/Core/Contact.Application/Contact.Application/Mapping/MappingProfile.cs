@@ -10,5 +10,8 @@ public class MappingProfile : Profile
     {
         CreateMap<CreatePersonCommand, Person>()
             .ReverseMap();
+
+        CreateMap<CreateContactToPersonCommand, Domain.Models.Contact>()
+            .ReverseMap();
     }
 }

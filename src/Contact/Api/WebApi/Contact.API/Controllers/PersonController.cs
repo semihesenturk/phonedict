@@ -68,6 +68,30 @@ namespace Contact.API.Controllers
 
             return Ok(result);
         }
+
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [HttpPost]
+        [Route("AddContact")]
+        public async Task<IActionResult> AddContactToPerson([FromBody] CreateContactToPersonCommand command)
+        {
+            var result = _mediator.Send(command);
+
+            return Ok(result.Result.ToString());
+        }
+
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [HttpDelete]
+        [Route("DeleteContact")]
+        public async Task<IActionResult> DeleteContact(Guid id)
+        {
+            DeleteContactFromPersonCommand deletePersonCommand = new DeleteContactFromPersonCommand(id);
+
+            var result = _mediator.Send(deletePersonCommand).Result;
+
+            return Ok(result);
+        }
         #endregion
     }
 }
