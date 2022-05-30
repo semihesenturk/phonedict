@@ -21,8 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Command\Contact\" />
+    <Folder Include="Features\Command\Person\Create\" />
+    <Folder Include="Features\Query\Contact\" />
+    <Folder Include="Features\Query\Person\" />
     <Folder Include="Mapping\" />
-    <Folder Include="Features\" />
   </ItemGroup>
 
 </Project>
