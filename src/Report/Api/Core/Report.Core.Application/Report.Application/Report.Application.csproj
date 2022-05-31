@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Common\PhoneDict.Common\PhoneDict.Common.csproj" />
+    <ProjectReference Include="..\..\Report.Core.Domain\Report.Domain\Report.Domain.csproj" />
   </ItemGroup>
 
 </Project>

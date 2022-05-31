@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
@@ -14,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\PhoneDict.Common\PhoneDict.Common.csproj" />
     <ProjectReference Include="..\..\Core\Report.Core.Application\Report.Application\Report.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Report.Infrastructure.Persistence\Report.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
