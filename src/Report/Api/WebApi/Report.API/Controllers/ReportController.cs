@@ -32,5 +32,15 @@ namespace Report.API.Controllers
 
             return Ok(result);
         }
+
+        [HttpPut("UpdateReport")]
+        public async Task<IActionResult> UpdateReport(UpdateReportCommand command)
+        {
+
+            var result = await _mediator.Send(command);
+
+            return Ok(result);
+        }
+
     }
 }

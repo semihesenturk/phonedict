@@ -60,17 +60,17 @@ namespace Report.API.BackgroundServices
 
             _connection.ConnectionShutdown += RabbitMQ_ConnectionShutdown;
         }
-        private void HandleMessage(string content)
+        private async void HandleMessage(string content)
         {
-            //var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get,
-            //                                                "https://localhost:7141/api/")
-            //{
-            //    Headers =
-            //    {
-            //        { HeaderNames.Accept, "application/vnd.github.v3+json" },
-            //        { HeaderNames.UserAgent, "HttpRequestsSample" }
-            //    }
-            //};
+            var httpClient = _httpClientFactory.CreateClient("Report");
+            var httpResponseMessage = await httpClient.GetAsync(
+                "https://localhost:7141/api/Contacts/GetContactsByLocation");
+
+            if (httpResponseMessage.IsSuccessStatusCode)
+            {
+                using var contentStream =
+                    await httpResponseMessage.Content.ReadAsStreamAsync();
+            }
         }
 
         private void OnConsumerConsumerCancelled(object sender, ConsumerEventArgs e) { }

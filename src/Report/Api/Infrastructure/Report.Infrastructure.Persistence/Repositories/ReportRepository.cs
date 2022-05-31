@@ -16,6 +16,14 @@ public class ReportRepository : IReportRepository
     }
     #endregion
 
+    public async Task<Domain.Models.Report> FindAsync(Guid id)
+    {
+        var result = _reportContext.Find<Domain.Models.Report>(id);
+
+        return result;
+
+    }
+
     public async Task<bool> CreateReport(Domain.Models.Report report)
     {
         await _reportContext.AddAsync(report);
