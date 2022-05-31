@@ -22,7 +22,7 @@ public class GetPersonDetailQueryHandler : IRequestHandler<GetPersonDetailQuery,
 
     public async Task<PersonDetailViewModel> Handle(GetPersonDetailQuery request, CancellationToken cancellationToken)
     {
-        var dbUser = await _personRepository.GetByIdAsync(request.PersonId);
+        var dbUser = await _personRepository.GetSingleAsync(s => s.Id == request.PersonId, false, s => s.Contacts);
 
         return _mapper.Map<PersonDetailViewModel>(dbUser);
     }
