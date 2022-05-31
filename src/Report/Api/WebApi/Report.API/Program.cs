@@ -1,3 +1,4 @@
+using Report.API.BackgroundServices;
 using Report.Application.Extensions;
 using Report.Infrastructure.Persistence.Extensions;
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationRegistration();
 builder.Services.AddInfrastructureRegistration(builder.Configuration);
+builder.Services.AddHostedService<ConsumeRabbitMQHostedService>();
 
 var app = builder.Build();
 
