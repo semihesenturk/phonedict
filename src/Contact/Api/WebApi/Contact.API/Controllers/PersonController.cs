@@ -27,7 +27,11 @@ namespace Contact.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPersons()
         {
-            return Ok();
+            GetPersonsQuery query = new GetPersonsQuery();
+
+            var result = await _mediator.Send(query);
+
+            return Ok(result);
         }
 
         [ProducesResponseType((int)HttpStatusCode.OK)]

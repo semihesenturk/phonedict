@@ -181,9 +181,9 @@ public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEnt
         return await query.ToListAsync();
     }
 
-    public virtual Task<List<TEntity>> GetAll(bool noTracking = true)
+    public virtual async Task<List<TEntity>> GetAll(bool noTracking = true)
     {
-        throw new NotImplementedException();
+        return await entity.ToListAsync();
     }
 
     public virtual async Task<TEntity> GetByIdAsync(Guid id, bool noTracking = true, params Expression<Func<TEntity, object>>[] includes)
