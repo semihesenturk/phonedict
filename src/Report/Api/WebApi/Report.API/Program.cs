@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationRegistration();
 builder.Services.AddInfrastructureRegistration(builder.Configuration);
-builder.Services.AddHostedService<ConsumeRabbitMQHostedService>();
+builder.Services.AddHttpClient<ConsumeRabbitMQHostedService>();
 
 var app = builder.Build();
 

@@ -28,8 +28,6 @@ public class CreateReportCommandHandler : IRequestHandler<CreateReportCommand, b
             ReportStatus = PhoneDict.Common.Models.Enums.ReportStatus.Preparing
         });
 
-
-
         QueueFactory.SendMessageToExchange(exchangeName: PhoneDictConstants.ReportExchangeName,
             exchangeType: PhoneDictConstants.DefaultExchangeType,
             queueName: PhoneDictConstants.CreateReportQueueName,

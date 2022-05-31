@@ -2,7 +2,7 @@
 
 public enum Location
 {
-    Istanbul = 0,
+    İstanbul = 0,
     Ankara = 1,
-    Izmir = 2
+    İzmir = 2
 }

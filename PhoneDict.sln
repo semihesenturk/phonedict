@@ -51,10 +51,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{F8CB18
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDict.Common", "src\Common\PhoneDict.Common\PhoneDict.Common.csproj", "{4FB7ADAB-9E0D-4F84-9A66-3DD9F2F86289}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackgroundService", "BackgroundService", "{021BB4E9-E255-4546-8414-4D41183966F6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDict.Report.BGService", "src\Report\BGService\PhoneDict.Report.BGService\PhoneDict.Report.BGService.csproj", "{03A1FA00-4B52-404F-ADA8-38646EC9280B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,10 +93,6 @@ Global
 		{4FB7ADAB-9E0D-4F84-9A66-3DD9F2F86289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FB7ADAB-9E0D-4F84-9A66-3DD9F2F86289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FB7ADAB-9E0D-4F84-9A66-3DD9F2F86289}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03A1FA00-4B52-404F-ADA8-38646EC9280B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03A1FA00-4B52-404F-ADA8-38646EC9280B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03A1FA00-4B52-404F-ADA8-38646EC9280B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03A1FA00-4B52-404F-ADA8-38646EC9280B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -129,8 +121,6 @@ Global
 		{1CBC9666-3E84-4AC6-9689-09EFFF3FCFCF} = {29F50D96-06D6-4A46-B0EB-E9EBFE3FC14B}
 		{F8CB180D-B8BF-449B-B0E6-315A439AF9F5} = {64D75877-1552-4409-B558-1C9AEB6E68D4}
 		{4FB7ADAB-9E0D-4F84-9A66-3DD9F2F86289} = {F8CB180D-B8BF-449B-B0E6-315A439AF9F5}
-		{021BB4E9-E255-4546-8414-4D41183966F6} = {25E74831-5FBC-4B31-B815-E524DD895FEC}
-		{03A1FA00-4B52-404F-ADA8-38646EC9280B} = {021BB4E9-E255-4546-8414-4D41183966F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9136B564-7BC2-4281-A08F-60FC78FF87DB}

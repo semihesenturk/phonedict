@@ -1,4 +1,5 @@
-﻿using PhoneDict.Common;
+﻿using Microsoft.Net.Http.Headers;
+using PhoneDict.Common;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
@@ -10,12 +11,14 @@ namespace Report.API.BackgroundServices
         #region Variables
         private IConnection _connection;
         private IModel _channel;
+        private readonly IHttpClientFactory _httpClientFactory;
         #endregion
 
         #region Constructor
-        public ConsumeRabbitMQHostedService()
+        public ConsumeRabbitMQHostedService(IHttpClientFactory httpClientFactory)
         {
             InitRabbitMQ();
+            _httpClientFactory = httpClientFactory;
         }
         #endregion
 
@@ -29,7 +32,7 @@ namespace Report.API.BackgroundServices
                 // received message  
                 var body = ea.Body.ToArray();
                 var message = Encoding.UTF8.GetString(body);
-
+                HandleMessage(message);
 
                 _channel.BasicAck(ea.DeliveryTag, false);
             };
@@ -59,7 +62,15 @@ namespace Report.API.BackgroundServices
         }
         private void HandleMessage(string content)
         {
-
+            //var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get,
+            //                                                "https://localhost:7141/api/")
+            //{
+            //    Headers =
+            //    {
+            //        { HeaderNames.Accept, "application/vnd.github.v3+json" },
+            //        { HeaderNames.UserAgent, "HttpRequestsSample" }
+            //    }
+            //};
         }
 
         private void OnConsumerConsumerCancelled(object sender, ConsumerEventArgs e) { }
