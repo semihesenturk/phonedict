@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Contact.Application.Features.Query.Person;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PhoneDict.Common.Models.RequestModels;
 using System.Net;
@@ -33,9 +34,22 @@ namespace Contact.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [HttpGet]
         [Route("{id}")]
-        public async Task<IActionResult> GetById(Guid id)
+        public async Task<IActionResult> GetById(Guid id, bool withDetail = false)
         {
-            return Ok();
+            if (!withDetail)
+            {
+                GetPersonQuery query = new GetPersonQuery(id);
+                var result = await _mediator.Send(query);
+
+                return Ok(result);
+            }
+            else
+            {
+                GetPersonDetailQuery getPersonDetailQuery = new GetPersonDetailQuery(id);
+                var detailResult = await _mediator.Send(getPersonDetailQuery);
+
+                return Ok(detailResult);
+            }
         }
 
         [ProducesResponseType((int)HttpStatusCode.OK)]

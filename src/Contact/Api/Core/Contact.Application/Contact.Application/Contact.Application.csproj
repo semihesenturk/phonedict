@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Query\Contact\" />
-    <Folder Include="Features\Query\Person\" />
   </ItemGroup>
 
 </Project>
