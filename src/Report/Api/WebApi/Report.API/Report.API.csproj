@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Common\PhoneDict.Common\PhoneDict.Common.csproj" />
+    <ProjectReference Include="..\..\Core\Report.Core.Application\Report.Application\Report.Application.csproj" />
   </ItemGroup>
 
 </Project>
